@@ -9,3 +9,5 @@ RUN git clone $PRIVATEBIN_SRC . && \
     [ "$PRIVATEBIN_VERSION" != 'master' ] && git checkout tags/$PRIVATEBIN_VERSION || git checkout master && \
     rm -rf .git && \
     mv .htaccess.disabled .htaccess
+
+COPY Mountfile /var/www/html/
