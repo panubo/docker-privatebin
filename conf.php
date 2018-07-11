@@ -21,7 +21,7 @@ burnafterreadingselected = true
 
 ; which display mode to preselect by default, defaults to "plaintext"
 ; make sure the value exists in [formatter_options]
-defaultformatter = "plaintext"
+defaultformatter = "markdown"
 
 ; (optional) set a syntax highlighting theme, as found in css/prettify/
 ; syntaxhighlightingtheme = "sons-of-obsidian"
