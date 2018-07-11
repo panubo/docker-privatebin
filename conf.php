@@ -14,7 +14,7 @@ opendiscussion = false
 password = true
 
 ; enable or disable the file upload feature, defaults to false
-fileupload = false
+fileupload = true
 
 ; preselect the burn-after-reading feature, defaults to false
 burnafterreadingselected = true
@@ -88,9 +88,9 @@ default = "1day"
 
 [formatter_options]
 ; Set available formatters, their order and their labels
+markdown = "Markdown"
 plaintext = "Plain Text"
 syntaxhighlighting = "Source Code"
-markdown = "Markdown"
 
 [traffic]
 ; time limit between calls from the same IP address in seconds
