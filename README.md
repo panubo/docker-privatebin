@@ -1,4 +1,4 @@
-# PrivateBin Docker Container
+# PrivateBin Docker Image
 
 NB. This provides ephemeral data storage to the backend.
 
