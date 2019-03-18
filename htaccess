@@ -1,0 +1,13 @@
+RewriteEngine on
+
+# If behind a proxy upgrade to https
+# Assumes X-Forwarded-Proto is always set when behind a proxy
+# Since the container does not support https we don't check 'RewriteCond %{HTTPS} off'
+RewriteCond %{HTTP:X-Forwarded-Proto} .+ [NC]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
+# Blocks some known robots and link-scanning bots
+# From https://github.com/PrivateBin/PrivateBin/blob/master/.htaccess.disabled
+RewriteCond %{HTTP_USER_AGENT} ^.*(bot|spider|crawl|https?://|WhatsApp|SkypeUriPreview|facebookexternalhit) [NC]
+RewriteRule .* - [R=403,L]
