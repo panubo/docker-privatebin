@@ -4,6 +4,9 @@
 ; An explanation of each setting can be find online at https://github.com/PrivateBin/PrivateBin/wiki/Configuration.
 
 [main]
+; (optional) set a project name to be displayed on the website
+name = "Panubo PrivateBin"
+
 ; enable or disable the discussion feature, defaults to true
 discussion = true
 
@@ -26,10 +29,10 @@ defaultformatter = "markdown"
 ; (optional) set a syntax highlighting theme, as found in css/prettify/
 ; syntaxhighlightingtheme = "sons-of-obsidian"
 
-; size limit per paste or comment in bytes, defaults to 2 Mibibytes
+; size limit per paste or comment in bytes, defaults to 2 Mebibytes
 sizelimit = 2097152
 
-; template to include, default is "bootstrap" (tpl/bootstrap.html)
+; template to include, default is "bootstrap" (tpl/bootstrap.php)
 template = "bootstrap"
 
 ; (optional) notice to display
@@ -49,6 +52,10 @@ languageselection = false
 ; the pastes encryption key
 ; urlshortener = "https://shortener.example.com/api?link="
 
+; (optional) Let users create a QR code for sharing the paste URL with one click.
+; It works both when a new paste is created and when you view a paste.
+qrcode = false
+
 ; (optional) IP based icons are a weak mechanism to detect if a comment was from
 ; a different user when the same username was used in a comment. It might be
 ; used to get the IP of a non anonymous comment poster if the server salt is
@@ -61,21 +68,31 @@ languageselection = false
 ; custom scripts from third-party domains to your templates, e.g. tracking
 ; scripts or run your site behind certain DDoS-protection services.
 ; Check the documentation at https://content-security-policy.com/
-; cspheader = "default-src 'none'; manifest-src 'self'; connect-src *; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; referrer no-referrer;"
+; Note: If you use a bootstrap theme, you can remove the allow-popups from the sandbox restrictions.
+; By default this disallows to load images from third-party servers, e.g. when they are embedded in pastes. If you wish to allow that, you can adjust the policy here. See https://github.com/PrivateBin/PrivateBin/wiki/FAQ#why-does-not-it-load-embedded-images for details.
+; cspheader = "default-src 'none'; manifest-src 'self'; connect-src *; script-src 'self' 'unsafe-eval'; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src blob:; object-src blob:; sandbox allow-same-origin allow-scripts allow-forms allow-popups allow-modals"
 
 ; stay compatible with PrivateBin Alpha 0.19, less secure
 ; if enabled will use base64.js version 1.7 instead of 2.1.9 and sha1 instead of
 ; sha256 in HMAC for the deletion token
-zerobincompatibility = false
+; zerobincompatibility = false
+
+; Enable or disable the warning message when the site is served over an insecure
+; connection (insecure HTTP instead of HTTPS), defaults to true.
+; Secure transport methods like Tor and I2P domains are automatically whitelisted.
+; It is **strongly discouraged** to disable this.
+; See https://github.com/PrivateBin/PrivateBin/wiki/FAQ#why-does-it-show-me-an-error-about-an-insecure-connection for more information.
+; httpwarning = true
+
+; Pick compression algorithm or disable it. Only applies to pastes/comments
+; created after changing the setting.
+; Can be set to one these values: none / zlib (default).
+; compression = zlib
 
 [expire]
 ; expire value that is selected per default
 ; make sure the value exists in [expire_options]
 default = "1day"
-
-; optionally the "clone" button can be disabled on expiring pastes
-; note that this only hides the button, copy & paste is still possible
-; clone = false
 
 [expire_options]
 ; Set each one of these to the number of seconds in the expiration period,
@@ -88,9 +105,9 @@ default = "1day"
 
 [formatter_options]
 ; Set available formatters, their order and their labels
-markdown = "Markdown"
 plaintext = "Plain Text"
 syntaxhighlighting = "Source Code"
+markdown = "Markdown"
 
 [traffic]
 ; time limit between calls from the same IP address in seconds

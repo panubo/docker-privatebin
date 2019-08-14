@@ -2,7 +2,7 @@ FROM docker.io/panubo/php-apache:debian8
 
 MAINTAINER Andrew Cutler <andrew@panubo.io>
 
-ENV PRIVATEBIN_VERSION=1.2.1 PRIVATEBIN_SRC=https://github.com/PrivateBin/PrivateBin.git
+ENV PRIVATEBIN_VERSION=1.3 PRIVATEBIN_SRC=https://github.com/PrivateBin/PrivateBin.git
 
 RUN cd /var/www/html/ \
   && git clone $PRIVATEBIN_SRC . \
