@@ -1,5 +1,5 @@
 NAME       := privatebin
-TAG        := `git describe --long --tags --dirty --always`
+TAG        := `git describe --tags --dirty --always`
 IMAGE_NAME := panubo/$(NAME)
 
 .PHONY: build push clean
