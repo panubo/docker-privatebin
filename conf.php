@@ -5,7 +5,7 @@
 
 [main]
 ; (optional) set a project name to be displayed on the website
-name = "Panubo PrivateBin"
+; name = "PrivateBin"
 
 ; enable or disable the discussion feature, defaults to true
 discussion = true
