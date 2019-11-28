@@ -1,14 +1,14 @@
-FROM docker.io/panubo/php-apache:debian8
+FROM docker.io/panubo/php-apache:debian10
 
-MAINTAINER Andrew Cutler <andrew@panubo.io>
+ENV PRIVATEBIN_VERSION=1.3.1 PRIVATEBIN_CHECKSUM=a93804b9225aafc6f318a8534f1daade561463f869234e1601be09e54d27d6f5
 
-ENV PRIVATEBIN_VERSION=1.3 PRIVATEBIN_SRC=https://github.com/PrivateBin/PrivateBin.git
-
-RUN cd /var/www/html/ \
-  && git clone $PRIVATEBIN_SRC . \
-  && [ "$PRIVATEBIN_VERSION" != 'master' ] && git checkout tags/$PRIVATEBIN_VERSION || git checkout master \
-  && rm -rf .git \
-  && mv .htaccess.disabled .htaccess \
+RUN set -x \
+  && wget --no-verbose -O /tmp/PrivateBin-${PRIVATEBIN_VERSION}.tar.gz "https://github.com/PrivateBin/PrivateBin/archive/${PRIVATEBIN_VERSION}.tar.gz" \
+  && echo "${PRIVATEBIN_CHECKSUM}  PrivateBin-${PRIVATEBIN_VERSION}.tar.gz" > /tmp/SHA256SUM \
+  && ( cd /tmp; sha256sum -c SHA256SUM; ) \
+  && tar -xzf /tmp/PrivateBin-${PRIVATEBIN_VERSION}.tar.gz -C /var/www/html --strip 1 \
+  && chown -R root:root /var/www/html \
+  && rm -f /tmp/PrivateBin-${PRIVATEBIN_VERSION}.tar.gz /tmp/SHA256SUM \
   ;
 
 COPY htaccess /var/www/html/.htaccess
