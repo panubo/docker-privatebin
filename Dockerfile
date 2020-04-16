@@ -1,6 +1,6 @@
 FROM docker.io/panubo/php-apache:debian10
 
-ENV PRIVATEBIN_VERSION=1.3.1 PRIVATEBIN_CHECKSUM=a93804b9225aafc6f318a8534f1daade561463f869234e1601be09e54d27d6f5
+ENV PRIVATEBIN_VERSION=1.3.4 PRIVATEBIN_CHECKSUM=0dad8976d823a01de8affb4136bd205f2e5ae418c01e560a0d84f94da7a78749
 
 RUN set -x \
   && wget --no-verbose -O /tmp/PrivateBin-${PRIVATEBIN_VERSION}.tar.gz "https://github.com/PrivateBin/PrivateBin/archive/${PRIVATEBIN_VERSION}.tar.gz" \
