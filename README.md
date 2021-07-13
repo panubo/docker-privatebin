@@ -4,7 +4,7 @@ Docker image for [PrivateBin](https://privatebin.info/).
 
 NB. This provides ephemeral data storage to the backend.
 
-We also use `conf.php` with some tweaked settings.
+We also use a custom `conf.php` with tweaked settings.
 
 ## Status
 
