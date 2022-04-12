@@ -10,6 +10,7 @@ RUN set -x \
   && tar -xzf /tmp/PrivateBin-${PRIVATEBIN_VERSION}.tar.gz -C /var/www/html --strip 1 \
   && chown -R root:root /var/www/html \
   && rm -f /tmp/PrivateBin-${PRIVATEBIN_VERSION}.tar.gz /tmp/SHA256SUM \
+  && mkdir /srv/remote \
   ;
 
 COPY htaccess /var/www/html/.htaccess

@@ -14,4 +14,4 @@ clean:
 	docker rmi $(IMAGE_NAME):$(TAG)
 
 run:
-	docker run --rm -t -i -v $(shell pwd)/data:/srv/remote $(IMAGE_NAME):$(TAG)
+	docker run --rm -t -i $(IMAGE_NAME):$(TAG)
