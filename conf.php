@@ -100,6 +100,7 @@ default = "1day"
 5min = 300
 10min = 600
 1hour = 3600
+8hour = 28800
 1day = 86400
 1week = 604800
 
@@ -116,10 +117,10 @@ limit = 10
 
 ; (optional) if your website runs behind a reverse proxy or load balancer,
 ; set the HTTP header containing the visitors IP address, i.e. X_FORWARDED_FOR
-; header = "X_FORWARDED_FOR"
+header = "X-FORWARDED-FOR"
 
 ; directory to store the traffic limits in
-dir = PATH "data"
+dir = PATH "/data"
 
 [purge]
 ; minimum time limit between two purgings of expired pastes, it is only
@@ -133,14 +134,14 @@ limit = 300
 batchsize = 10
 
 ; directory to store the purge limit in
-dir = PATH "data"
+dir = PATH "/data"
 
 [model]
 ; name of data model class to load and directory for storage
 ; the default model "Filesystem" stores everything in the filesystem
 class = Filesystem
 [model_options]
-dir = PATH "data"
+dir = PATH "/data"
 
 ;[model]
 ; example of DB configuration for MySQL
