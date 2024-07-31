@@ -46,7 +46,7 @@ jobs:
 
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         with:
           # list of Docker images to use as base name for tags
           images: |
@@ -63,7 +63,7 @@ jobs:
             # type=sha
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         id: buildx
@@ -71,7 +71,7 @@ jobs:
 
       # The values provided to these two AWS steps are always the same for Panubo owned repos
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1-node16
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ env.GITHUB_ROLE_ARN }}
           aws-region: us-east-1
@@ -96,7 +96,7 @@ jobs:
           bats-version: 1.7.0
 
       - name: Build and export to Docker
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           builder: ${{ steps.buildx.outputs.name }}
           cache-from: type=gha
@@ -108,7 +108,7 @@ jobs:
           make _ci_test
 
       - name: Build and Push
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           builder: ${{ steps.buildx.outputs.name }}
           push: ${{ github.event_name != 'pull_request' }}
