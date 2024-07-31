@@ -18,3 +18,6 @@ run:
 
 bash:
 	docker run --rm -t -i -P --entrypoint /bin/bash $(IMAGE_NAME):$(TAG)
+
+_ci_test:
+	true
