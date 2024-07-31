@@ -15,3 +15,6 @@ clean:
 
 run:
 	docker run --rm -t -i -P $(IMAGE_NAME):$(TAG)
+
+bash:
+	docker run --rm -t -i -P --entrypoint /bin/bash $(IMAGE_NAME):$(TAG)
