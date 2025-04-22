@@ -1,7 +1,7 @@
 FROM quay.io/panubo/php-apache:debian12
 
-ENV PRIVATEBIN_VERSION=1.7.4 \
-    PRIVATEBIN_CHECKSUM=ee90331a9a955d1bf7efe178d89a92359092123d1071ee2aab1866c0ab43af97
+ENV PRIVATEBIN_VERSION=1.7.6 \
+    PRIVATEBIN_CHECKSUM=4f886854cc45b42d0dfac874fcbc0a47fba4318d16d92e7ddb0c1b6666bdfb96
 
 RUN set -x \
   && wget --no-verbose -O /tmp/PrivateBin-${PRIVATEBIN_VERSION}.tar.gz "https://github.com/PrivateBin/PrivateBin/archive/${PRIVATEBIN_VERSION}.tar.gz" \
